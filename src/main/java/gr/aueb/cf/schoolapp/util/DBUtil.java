@@ -12,7 +12,7 @@ public class DBUtil {
 	
 	static {
 		ds.setUrl("jdbc:mysql://localhost:3306/schooldb7staging?serverTimeZone=UTC");
-		ds.setUsername("user7pro");
+		ds.setUsername("user7");
 
 		//ds.setPassword(System.getenv("PASS_USER7")); need to set env variable
 		ds.setPassword("12345");

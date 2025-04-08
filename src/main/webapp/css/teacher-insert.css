@@ -1,33 +1,21 @@
-.main-content {
-    margin: 10px auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    padding: 20px;
-    text-align: center;
-    min-height: 60vh;
-    width: 80vw;
-}
+.min-height-form{
+    min-height: 35px;
+}	
+        
+.bg-light-orange {
+    background-color: #F4BC84;
+}		
 
-.form {
-    display: flex;
-    place-content: center;
-    width: 70vw;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border: 1px solid black;
-}
-
-.validation-error {
-    color: red;
-}
-
-.m-bottom {
-    margin-bottom: 15px;
-}
-
-.row {
-    display: flex;
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    height: calc(3.5rem + 2px);
 }
