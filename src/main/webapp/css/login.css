@@ -1,0 +1,25 @@
+/** Backgrounds **/
+body.bg-light-orange {
+    background-color: #F4BC84 !important;
+}
+
+/** Buttons **/
+.bg-green-color {
+    background-color: #649142 !important;
+    border-color: #649142 !important;
+    color: white !important;
+    transition: all 0.3s ease;
+}
+
+.bg-green-color:hover,
+.bg-green-color:focus,
+.bg-green-color:active {
+    background-color: #5cb85c !important;
+    border-color: #5cb85c !important;
+    color: white !important;
+	box-shadow: none !important;
+}
+
+
+
+

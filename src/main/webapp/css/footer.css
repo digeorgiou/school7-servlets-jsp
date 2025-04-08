@@ -1,0 +1,21 @@
+
+
+.bg-opa-red{
+    background-color: #772026;
+}
+
+.border-5{
+    border-width: 5px;
+}
+
+.border-strong-orange{
+    border-color:#E85E42 !important;
+}
+
+.ps-10rem {
+    padding-left: 10rem ;
+  }
+  
+.min-vh-15 {
+    min-height: 15vh;
+  }

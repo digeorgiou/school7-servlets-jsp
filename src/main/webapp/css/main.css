@@ -1,0 +1,37 @@
+.main-content {
+    padding: 20px;
+    text-align: center;
+    min-height: 60vh;
+}
+
+.mheight100{
+	min-height:100vh;
+}
+
+.bg-light-orange {
+    background-color: #F4BC84;
+}
+
+.bg-green-color{
+    background-color: #649142;
+}
+
+.custom-button-green:hover {
+    background-color: var(--green-color-hover);
+}
+
+
+.transparent-bg {
+  background-image: url("../img/happystudents.jpg");
+  background-size: cover; /* or contain, or specific dimensions */
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+  filter: grayscale(100%);
+}
+
+footer{
+	margin-top:auto;
+}
+
+

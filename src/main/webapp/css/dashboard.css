@@ -1,0 +1,34 @@
+.left-section, .right-section {
+    background-size: cover;
+            height: calc(85vh - 70px);
+            position: relative;  
+            filter: grayscale(100%);
+}
+
+.left-btn-container {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Ensures buttons stay above overlay */
+}
+
+.right-btn-container {
+    position: absolute;
+    top: 50%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Ensures buttons stay above overlay */
+}
+
+.color-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
