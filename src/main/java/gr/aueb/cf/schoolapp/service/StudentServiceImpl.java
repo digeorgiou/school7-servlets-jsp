@@ -27,9 +27,12 @@ public class StudentServiceImpl implements IStudentService{
 
         try{
             student = Mapper.mapStudentInsertToModel(dto);
-            if(studentDAO.getByEmail(dto.getEmail()) != null)
-                throw new StudentAlreadyExistsException("Student with email :" +
-                        " " + dto.getEmail() + " already exists");
+
+            // Check if email exists
+            if (studentDAO.emailExists(dto.getEmail())) {
+                throw new StudentAlreadyExistsException("Email already in use");
+            }
+
             insertedStudent = studentDAO.insert(student);
             //logging
             return Mapper.mapStudentToReadOnlyDTO(insertedStudent).orElse(null);

@@ -10,7 +10,9 @@ public class StudentInsertDTO extends BaseStudentDTO{
 
     public StudentInsertDTO(String firstname, String lastname, String fatherName,
                             String phoneNum, String email, Integer registrationYear,
-                            StudyDirection studyDirection, Integer cityId, LocalDate birthdate) {
-        super(firstname, lastname, fatherName, phoneNum, email, registrationYear, studyDirection, cityId, birthdate);
+                            StudyDirection studyDirection, Integer cityId,
+                            LocalDate birthDate) {
+        super(firstname, lastname, fatherName, phoneNum, email,
+                registrationYear, studyDirection, cityId, birthDate);
     }
 }

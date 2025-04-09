@@ -50,14 +50,14 @@ public class Mapper {
         return new Student(null, dto.getFirstname(), dto.getLastname(),
                 dto.getFatherName(), dto.getPhoneNum(), dto.getEmail(),
                 dto.getRegistrationYear(), dto.getStudyDirection(),
-                dto.getCityId(), dto.getBirthdate(),null, null, null);
+                dto.getCityId(), dto.getBirthDate(),null, null, null);
     }
 
     public static Student mapStudentUpdateToModel(StudentUpdateDTO dto){
         return new Student(dto.getId(), dto.getFirstname(), dto.getLastname(),
                 dto.getFatherName(), dto.getPhoneNum(), dto.getEmail(),
                 dto.getRegistrationYear(), dto.getStudyDirection(),
-                dto.getCityId(), dto.getBirthdate(),null, null, null);
+                dto.getCityId(), dto.getBirthDate(),null, null, null);
     }
 
     public static Optional<StudentReadOnlyDTO> mapStudentToReadOnlyDTO(Student student){

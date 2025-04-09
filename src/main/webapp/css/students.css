@@ -104,9 +104,3 @@ input[type="text"] {
 input[type="text"]:not(:last-child) {
     margin-right: 15px; /* Same as button margin */
 }
-
-.focus-blue:focus {
-        outline: none !important;
-        border: none !important;
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
-    }

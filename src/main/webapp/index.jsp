@@ -38,6 +38,12 @@
             justify-content: center;
             align-items: center;
         }
+
+        .bg-green-color:hover {
+            background-color: #649142 !important;
+            filter: brightness(1.1) !important;
+            transition: filter 0.2s ease;
+        }
     </style>
 </head>
 <body>

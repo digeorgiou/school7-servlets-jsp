@@ -14,6 +14,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/students.css">
+    <style>
+                   .focus-blue:focus {
+                   outline: none !important;
+                   border: none !important;
+                   box-shadow: 0 0 0 0.25rem rgba(100, 200, 255, 0.5) !important;
+               }
+        </style>
 </head>
 <body class="bg-light-orange d-flex flex-column min-vh-100">
 <%@ include file="header.jsp"%>

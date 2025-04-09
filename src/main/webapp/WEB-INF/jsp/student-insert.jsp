@@ -5,18 +5,21 @@
     response.setHeader("Expires", "0");
 %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Εισαγωγή Καθηγητή</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/teacher-insert.css">
+    <title>Εισαγωγή Μαθητή</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="${pageContext.request
+    .contextPath}/css/student-insert.css">
 </head>
 <body class="d-flex flex-column min-vh-100 bg-light-orange">
     <%@ include file="header.jsp"%>
 
     <main class="flex-grow-1 d-flex align-items-center py-4">
         <div class="container" style="max-width: 1000px;">
-            <form method="POST" action="${pageContext.request.contextPath}/school-app/teachers/insert">
+            <form method="POST" action="${pageContext.request.contextPath}/school-app/students/insert">
                 <div class="row g-5">
                 <!-- Column 1 -->
                     <div class="col-md-6">
@@ -32,12 +35,12 @@
 
                         <div class="form-floating mb-1">
                             <input class="form-control" type="text"
-                            name="vat" value="${requestScope.insertDTO.vat}"
-                            placeholder="ΑΦΜ">
-                            <label for="vat" class="fw-bold">ΑΦΜ</label>
+                            name="email" value="${requestScope.insertDTO.email}"
+                            placeholder="E-mail">
+                            <label for="email" class="fw-bold">E-mail</label>
                             <div class="mt-1 min-height-form">
                                 <small class="text-danger">${sessionScope
-                                .vatMessage}</small>
+                                .emailMessage}</small>
                             </div>
                         </div>
 
@@ -53,21 +56,29 @@
 
                         <div class="form-floating mb-1">
                             <input class="form-control" type="text"
-                            name="street" value="${requestScope.insertDTO.street}"
-                            placeholder="Οδός">
-                            <label for="street" class="fw-bold">Οδός</label>
+                            name="registrationYear" value="${requestScope.insertDTO.registrationYear}"
+                            placeholder="Έτος Εγγραφής">
+                            <label for="registrationYear" class="fw-bold">Έτος εγγραφής</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope.streetMessage}</small>
+                                <small class="text-danger">${sessionScope.registrationYearMessage}</small>
                             </div>
                         </div>
 
                         <div class="form-floating mb-1">
-                            <input class="form-control" type="text"
-                            name="zipcode" value="${requestScope.insertDTO.zipCode}"
-                            placeholder="ΤΚ">
-                            <label for="zipcode" class="fw-bold">ΤΚ</label>
+                            <select class="form-control" name="studyDirection">
+                                <option value="" disabled ${empty insertDTO.studyDirection ? 'selected' : ''}>
+                                    Επιλογή Κατεύθυνσης
+                                </option>
+                                <c:forEach items="${requestScope.studyDirections}" var="direction">
+                                    <option value="${direction}"
+                                            ${direction eq insertDTO.studyDirection ? 'selected' : ''}>
+                                        ${direction}
+                                    </option>
+                                </c:forEach>
+                            </select>
+                            <label for="studyDirection" class="fw-bold">Κατεύθυνση σπουδών</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope.zipcodeMessage}</small>
+                                <small class="text-danger">${sessionScope.studyDirectionMessage}</small>
                             </div>
                         </div>
                     </div>
@@ -92,29 +103,22 @@
                             <label for="fathername" class="fw-bold">Όνομα
                             Πατρός</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${requestScope.fathernameMessage}</small>
+                                <small class="text-danger">${sessionScope
+                                .fathernameMessage}</small>
                             </div>
                         </div>
 
                         <div class="form-floating mb-1">
-                            <input class="form-control" type="text"
-                            name="email" value="${requestScope.insertDTO.email}"
-                            placeholder="E-mail">
-                            <label for="email" class="fw-bold">E-mail</label>
+                            <input class="form-control datepicker" type="text"
+                                   name="birthDate" value="${requestScope.insertDTO.birthDate}"
+                                   placeholder="Ημερομηνία Γέννησης" autocomplete="off">
+                            <label for="birthDate" class="fw-bold">Ημερομηνία Γέννησης</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${requestScope.emailMessage}</small>
+                                <small class="text-danger">${sessionScope
+                                .birthDateMessage}</small>
                             </div>
                         </div>
 
-                        <div class="form-floating mb-1">
-                            <input class="form-control" type="text"
-                            name="streetNum" value="${requestScope.insertDTO.streetNum}"
-                            placeholder="Αριθμός">
-                            <label for="streetNum" class="fw-bold">Αριθμός</label>
-                            <div class="mt-1 min-height-form">
-                                <small class="text-danger">${requestScope.streetNumMessage}</small>
-                            </div>
-                        </div>
 
                         <div class="mb-1">
                             <div class="form-floating">
@@ -143,7 +147,7 @@
                            <!-- Form Actions -->
                 <div class="col-12 text-center mt-2">
                      <button type="submit" class="btn btn-success btn-lg px-5 py-3">Εισαγωγή</button>
-                    <a href="${pageContext.request.contextPath}/school-app/teachers/view"
+                    <a href="${pageContext.request.contextPath}/school-app/students/view"
                     class="btn btn-secondary btn-lg px-5 py-3 ms-3">Επιστροφή</a>
                 </div>
 
@@ -152,9 +156,25 @@
                 </div>
             </div>
         </form>
-        </div>
+    </div>
     </main>
 
     <%@ include file="footer.jsp"%>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.el.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                language: 'el',
+                autoclose: true,
+                todayHighlight: true,
+                orientation: "bottom auto" /* Makes calendar appear below input */
+            });
+        });
+    </script>
 </body>
 </html>

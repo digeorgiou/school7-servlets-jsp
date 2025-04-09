@@ -19,3 +19,7 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     height: calc(3.5rem + 2px);
 }
+
+bg-black {
+background-color: black;
+}

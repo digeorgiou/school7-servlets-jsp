@@ -16,6 +16,12 @@
     background-color: #649142;
 }
 
+.bg-green-color:hover {
+    background-color: #649142 !important; /* Original color */
+    filter: brightness(1.1) !important; /* Makes it 10% brighter */
+    transition: filter 0.2s ease;
+}
+
 .custom-button-green:hover {
     background-color: var(--green-color-hover);
 }

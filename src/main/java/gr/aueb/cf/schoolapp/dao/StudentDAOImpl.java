@@ -307,4 +307,20 @@ public class StudentDAOImpl implements IStudentDAO{
                     "student with name: " + firstname + " " + lastname);
         }
     }
+
+    @Override
+    public boolean emailExists(String email) throws StudentDAOException {
+        String sql = "SELECT COUNT(*) FROM STUDENTS WHERE EMAIL = ?";
+
+        try (Connection connection = DBUtil.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            ps.setString(1,email);
+            ResultSet rs = ps.executeQuery();
+            return rs.next() && rs.getInt(1) > 0;
+
+        }catch (SQLException e) {
+            throw new StudentDAOException("Error checking email existence");
+        }
+    }
 }

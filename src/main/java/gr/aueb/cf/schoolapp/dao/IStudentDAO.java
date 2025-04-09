@@ -21,4 +21,6 @@ public interface IStudentDAO {
     List<Student> getFilteredStudent(String firstname, String lastname,
                                      String email) throws StudentDAOException;
 
+    boolean emailExists(String email) throws StudentDAOException;
+
 }

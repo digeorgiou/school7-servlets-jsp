@@ -10,7 +10,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class BaseStudentDTO {
@@ -22,7 +21,23 @@ public class BaseStudentDTO {
     private Integer registrationYear;
     private StudyDirection studyDirection;
     private Integer cityId;
-    private LocalDate birthdate;
+    private LocalDate birthDate;
+
+    public BaseStudentDTO(String firstname, String lastname, String fatherName, String phoneNum,
+                          String email, Integer registrationYear, StudyDirection studyDirection,
+                          Integer cityId, LocalDate birthDate) {
+
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.fatherName = fatherName != null? fatherName.trim() : "";
+        //converting null to empty string
+        this.phoneNum = phoneNum;
+        this.email = email;
+        this.registrationYear = registrationYear;
+        this.studyDirection = studyDirection;
+        this.cityId = cityId;
+        this.birthDate = birthDate;
+    }
 
     @Override
     public String toString() {
@@ -35,7 +50,7 @@ public class BaseStudentDTO {
                 ", registrationYear=" + registrationYear +
                 ", studyDirection=" + studyDirection +
                 ", cityId=" + cityId +
-                ", birthdate=" + birthdate +
+                ", birthdate=" + birthDate +
                 '}';
     }
 }

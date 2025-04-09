@@ -13,6 +13,14 @@
     <title>Προβολή Καθηγητών</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/teachers.css">
+
+    <style>
+               .focus-blue:focus {
+               outline: none !important;
+               border: none !important;
+               box-shadow: 0 0 0 0.25rem rgba(100, 200, 255, 0.5) !important;
+           }
+    </style>
 </head>
 <body class="bg-light-orange d-flex flex-column min-vh-100">
 <%@ include file="header.jsp"%>
@@ -20,8 +28,7 @@
 
     <div class="d-flex justify-content-center pt-3 pb-3">
         <form id="filterForm" method="GET" action="${pageContext.request.contextPath}/school-app/teachers/view">
-            <%--        <input type="text" name="filterId" placeholder="Enter ID" />--%>
-            <input class="rounded-3 border-0 px-5 py-2 focus-blue"type="text"
+            <input class="focus-blue rounded-3 border-0 px-5 py-2" type="text"
             name="firstname"
             placeholder="Όνομα" />
             <input class="rounded-3 border-0 px-5 py-2 focus-blue" type="text"
@@ -109,7 +116,6 @@
 
 <div>
 <%--    <c:if test="${requestScope.deleteAPIError}">--%>
-        <p>${requestScope.message}</p>
 <%--    </c:if>--%>
 </div>
 
