@@ -10,51 +10,58 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Προβολή Καθηγητών</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/teachers.css">
+    <title>Προβολή Μαθητών</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/students.css">
 </head>
 <body class="bg-light-orange d-flex flex-column min-vh-100">
 <%@ include file="header.jsp"%>
 <div class="flex-grow-1 d-flex flex-column justify-content-center gap-4">
 
-    <div class="d-flex justify-content-center pt-3 pb-3">
-        <form id="filterForm" method="GET" action="${pageContext.request.contextPath}/school-app/teachers/view">
-            <%--        <input type="text" name="filterId" placeholder="Enter ID" />--%>
-            <input class="rounded-3 border-0 px-5 py-2 focus-blue"type="text"
-            name="firstname"
-            placeholder="Όνομα" />
-            <input class="rounded-3 border-0 px-5 py-2 focus-blue" type="text"
-            name="lastname" placeholder="Επώνυμο" />
-            <input class="btn btn-primary btn-lg rounded-3 ps-5 pe-5 pt-1
-                                              pb-1 me-4 ms-4" id="submitBtn" type="submit" value="Αναζήτηση" />
-            <button class="btn btn-secondary btn-lg rounded-3 ps-5 pe-5
-                                              pt-1 pb-1" id="resetBtn" type="button" onclick="reset()">Επαναφορά</button>
-        </form>
-    </div>
+
+       <div class="d-flex justify-content-center pt-3 pb-3">
+               <form id="filterForm" method="GET" action="${pageContext.request.contextPath}/school-app/students/view">
+                   <input class="rounded-3 border-0 px-5 py-2 focus-blue"type="text"
+                   name="firstname"
+                   placeholder="Όνομα" />
+                   <input class="rounded-3 border-0 px-5 py-2 focus-blue" type="text"
+                   name="lastname" placeholder="Επώνυμο" />
+                   <input class="rounded-3 border-0 px-5 py-2 focus-blue" type="text"
+                               name="email" placeholder="Email" />
+                   <input class="btn btn-primary btn-lg rounded-3 ps-5 pe-5 pt-1
+                    pb-1 me-4 ms-4"
+                   id="submitBtn" type="submit" value="Αναζήτηση" />
+                   <button class="btn btn-secondary btn-lg rounded-3 ps-5 pe-5
+                   pt-1 pb-1"
+                   id="resetBtn" type="button" onclick="reset()">Επαναφορά</button>
+               </form>
+           </div>
+
     <div class="d-flex justify-content-center table-responsive">
         <c:choose>
-            <c:when test="${not empty requestScope.teachers}">
+            <c:when test="${not empty requestScope.students}">
                 <table class="table table-striped table-warning">
                     <thead class="sticky-top">
                         <tr class="text-center">
                             <th>Κωδικός</th>
                             <th>Όνομα</th>
                             <th>Επώνυμο</th>
+                            <th>Email</th>
                             <th>Πράξεις</th>
                         </tr>
                     </thead>
 
-                    <c:forEach var = "teacher" items = "${requestScope
-                    .teachers}">
+                    <c:forEach var = "student" items = "${requestScope.students}">
                         <tr>
-                            <td>${teacher.id}</td>
-                            <td>${teacher.firstname}</td>
-                            <td>${teacher.lastname}</td>
+                            <td>${student.id}</td>
+                            <td>${student.firstname}</td>
+                            <td>${student.lastname}</td>
+                            <td>${student.email}</td>
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
                                     <a href="${pageContext.request
-                                    .contextPath}/school-app/teachers/view?id=${teacher.id}">
+                                    .contextPath}/school-app/students/view?id=${student.id}">
                                         <svg width = "20" height="20" xmlns="http://www.w3
                                         .org/2000/svg" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
                                         <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668
@@ -64,7 +71,7 @@
                                         </svg>
                                     </a>
                                     <a href="${pageContext.request
-                                    .contextPath}/school-app/teachers/update?id=${teacher.id}">
+                                    .contextPath}/school-app/students/update?id=${student.id}">
                                         <svg width = "20" height="20" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-pencil-square" viewBox="0 0 16 16">
                                          <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75
@@ -73,10 +80,8 @@
                                        .5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                                         </svg>
                                     </a>
-                                    <a href="${pageContext.request
-                                    .contextPath}/school-app/teachers/delete?id=${teacher.id}
-                                    "onclick="return confirm('Are you sure you
-                                    want to delete this teacher?')">
+                                    <a href="${pageContext.request.contextPath}/school-app/students/delete?id=${student.id}
+                                    "onclick="return confirm('Are you sure you want to delete this student?')">
                                         <svg width = "20" height="20"xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                                         <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1
                                         0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0
@@ -101,15 +106,16 @@
 
     <c:if test="${sessionScope.role == 'ADMIN'}">
         <div class="d-flex justify-content-center">
-            <a class="btn btn-success btn-lg rounded-3 ps-4 pe-4 pt-4 pb-4"
-            href="${pageContext.request.contextPath}/school-app/teachers/insert">Εισαγωγή Καθηγητή</a>
+            <a class="btn btn-success btn-lg rounded-3 ps-4 pe-4
+                                               pt-4 pb-4"
+            href="${pageContext.request
+            .contextPath}/school-app/students/insert">Εισαγωγή Μαθητή</a>
         </div>
      </c:if>
 </div>
 
 <div>
 <%--    <c:if test="${requestScope.deleteAPIError}">--%>
-        <p>${requestScope.message}</p>
 <%--    </c:if>--%>
 </div>
 
@@ -121,7 +127,7 @@
 
 <%@ include file="footer.jsp"%>
 
-<script src="${pageContext.request.contextPath}/js/teachers.js">
+<script src="${pageContext.request.contextPath}/js/students.js">
 
 </script>
 </body>

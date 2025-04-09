@@ -24,8 +24,7 @@
 <%--            <span>${sessionScope.lastname</span>--%>
             <h4 class="text-white"><span>${sessionScope.username}</span></h4>
             <c:if test="${sessionScope.username != null}">
-               <h3> <a class="ms-2 me-2 bg-yellow text-decoration-none
-               text-black ps-2 pe-2"
+               <h3> <a class="ms-2 me-2 btn btn-warning btn-lg ps-2 pe-2 ms-4"
                href="${pageContext.request
                 .contextPath}/logout">Έξοδος</a> </h3>
             </c:if>

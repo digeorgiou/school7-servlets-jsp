@@ -38,7 +38,8 @@
                         <div class="color-overlay"></div>
                     </div>
                     <div class="right-btn-container">
-                        <a href="<c:url value='${pageContext.request.contextPath}/school-app/teachers/view' />"
+                        <a href="<c:url value='${pageContext.request
+                        .contextPath}/school-app/students/view' />"
                          class="btn btn-success btn-lg rounded-3 ps-4 pe-4
                          pt-4 pb-4">Προβολή Μαθητων
                          </a>
