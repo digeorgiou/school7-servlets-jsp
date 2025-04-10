@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @NoArgsConstructor
 @Getter
@@ -22,6 +23,7 @@ public class BaseStudentDTO {
     private StudyDirection studyDirection;
     private Integer cityId;
     private LocalDate birthDate;
+    private String formattedBirthDate;
 
     public BaseStudentDTO(String firstname, String lastname, String fatherName, String phoneNum,
                           String email, Integer registrationYear, StudyDirection studyDirection,
@@ -38,6 +40,7 @@ public class BaseStudentDTO {
         this.cityId = cityId;
         this.birthDate = birthDate;
     }
+
 
     @Override
     public String toString() {

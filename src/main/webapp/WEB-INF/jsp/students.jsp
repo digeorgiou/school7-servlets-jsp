@@ -13,6 +13,7 @@
     <title>Προβολή Μαθητών</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/students.css">
     <style>
                    .focus-blue:focus {
@@ -68,33 +69,22 @@
                             <td>
                                 <div class="d-flex justify-content-center gap-3">
                                     <a href="${pageContext.request
-                                    .contextPath}/school-app/students/view?id=${student.id}">
-                                        <svg width = "20" height="20" xmlns="http://www.w3
-                                        .org/2000/svg" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
-                                        <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668
-                                        5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11
-                                        .879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z"/>
-                                        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
-                                        </svg>
+                                    .contextPath}/school-app/students/details?id=${student.id}">
+                                        <i class="bi bi-eye fs-5"></i>
                                     </a>
                                     <a href="${pageContext.request
                                     .contextPath}/school-app/students/update?id=${student.id}">
-                                        <svg width = "20" height="20" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75
-                                         2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                       <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5
-                                       .5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                                        </svg>
+                                        <i class="bi bi-pencil-square fs-5"></i>
                                     </a>
-                                    <a href="${pageContext.request.contextPath}/school-app/students/delete?id=${student.id}
-                                    "onclick="return confirm('Are you sure you want to delete this student?')">
-                                        <svg width = "20" height="20"xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                        <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1
-                                        0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0
-                                        .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4
-                                        .5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"/>
-                                        </svg>
+                                    <a href="#" class="delete-btn"
+                                        data-student-id="${student.id}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal"
+                                        data-student-firstname="${student
+                                        .firstname}"
+                                        data-student-lastname="${student
+                                        .lastname}">
+                                        <i class="bi bi-trash-fill fs-5"></i>
                                     </a>
                                 </div>
                             </td>
@@ -110,15 +100,19 @@
             </c:otherwise>
         </c:choose>
     </div>
+    <div class="row mt-4">
+         <div class="col-12 text-center">
+            <c:if test="${sessionScope.role == 'ADMIN'}">
+                    <a class="btn btn-success btn-lg px-3 py-3"
+                    href="${pageContext.request
+                    .contextPath}/school-app/students/insert">Εισαγωγή Μαθητή</a>
+             </c:if>
+             <a class="btn btn-secondary btn-lg px-5 py-3 ms-3"
+                href="${pageContext.request.contextPath}/school-app/dashboard">
+                Επιστροφή</a>
+         </div>
+    </div>
 
-    <c:if test="${sessionScope.role == 'ADMIN'}">
-        <div class="d-flex justify-content-center">
-            <a class="btn btn-success btn-lg rounded-3 ps-4 pe-4
-                                               pt-4 pb-4"
-            href="${pageContext.request
-            .contextPath}/school-app/students/insert">Εισαγωγή Μαθητή</a>
-        </div>
-     </c:if>
 </div>
 
 <div>
@@ -133,6 +127,68 @@
 </div>
 
 <%@ include file="footer.jsp"%>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">Επιβεβαίωση διαγραφής</h5>
+                    <button type="button" class="btn-close btn-close-white"
+                    data-bs-dismiss="modal" aria-label="Κλείσιμο"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Είστε σίγουροι ότι θέλετε να διαγράψετε τον μαθητή:
+                    </p>
+                     <p><strong>ID: <span
+                     id="modalStudentId"></span></strong></p>
+                     <p><strong>Ονοματεπώνυμο: <span
+                     id="modalStudentLastname"></span>
+                     <span id="modalStudentFirstname"></span></strong></p>
+                    <div class="alert alert-warning mt-3">
+                     <i class="bi bi-exclamation-triangle-fill"></i> Η διαγραφή
+                     είναι μη αναστρέψιμη
+                     </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                    data-bs-dismiss="modal">Ακύρωση</button>
+                    <a id="confirmDeleteBtn" href="#" class="btn btn-danger">Διαγραφή</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteModal = document.getElementById('deleteModal');
+
+        deleteModal.addEventListener('show.bs.modal', function(event) {
+            const button = event.relatedTarget;
+
+            // Extract all data attributes
+            const id = button.getAttribute('data-student-id');
+            const firstname = button.getAttribute('data-student-firstname');
+            const lastname = button.getAttribute('data-student-lastname');
+
+            // Debugging - check values in console
+            console.log('Student Data:', {id, firstname, lastname});
+
+            // Update modal content
+            document.getElementById('modalStudentId').textContent = id;
+            document.getElementById('modalStudentLastname').textContent =
+            lastname;
+            document.getElementById('modalStudentFirstname').textContent =
+            firstname;
+
+            // Set delete URL
+            document.getElementById('confirmDeleteBtn').href =
+                `${pageContext.request
+                .contextPath}/school-app/students/delete?id=${id}`;
+        });
+    });
+    </script>
 
 <script src="${pageContext.request.contextPath}/js/students.js">
 

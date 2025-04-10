@@ -76,6 +76,7 @@ public class StudentInsertController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setCharacterEncoding("UTF-8");
 
+
         Map<String, String> errors = new HashMap<>();
 
         StudentInsertDTO insertDTO;
@@ -110,16 +111,15 @@ public class StudentInsertController extends HttpServlet {
                 StudyDirection.valueOf(req.getParameter("studyDirection").trim())
                         : null;
         Integer cityId = (req.getParameter("cityId") != null) ? Integer.parseInt(req.getParameter("cityId").trim()) : 0;
-        String  birthDateStr = (req.getParameter("birthDate") != null)?
+        String birthDateStr = (req.getParameter("birthDate") != null) ?
                 req.getParameter("birthDate").trim() : "";
         LocalDate birthDate = null;
+
         if(!birthDateStr.isEmpty()) {
             try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM" +
-                        "/yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 birthDate = LocalDate.parse(birthDateStr, formatter);
             } catch (DateTimeParseException e) {
-                // Handle parse exception if needed
                 errors.put("birthDate", "Μη έγκυρη ημερομηνία. Χρησιμοποιήστε μορφή ΗΗ/ΜΜ/ΕΕΕΕ");
             }
         }
@@ -127,6 +127,7 @@ public class StudentInsertController extends HttpServlet {
         insertDTO = new StudentInsertDTO(firstname,lastname,fathername,
                 phoneNum,email,registrationYear,studyDirection,cityId,
                 birthDate);
+        insertDTO.setFormattedBirthDate(birthDateStr);
 
         try {
             // Validate dto

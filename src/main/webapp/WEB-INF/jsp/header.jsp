@@ -11,7 +11,9 @@
 <header class="sticky-top d-flex justify-content-between height-70 bg-opa-red align-items-center">
 
         <div class="h-100 w-25">
-            <a href=""><img class= "h-100 w-25" src="${pageContext.request
+            <a href="${pageContext.request
+            .contextPath}/school-app/dashboard"><img
+            class= "h-100 w-25" src="${pageContext.request
             .contextPath}/img/auebimg.jpg" alt=""></a>
         </div>
 

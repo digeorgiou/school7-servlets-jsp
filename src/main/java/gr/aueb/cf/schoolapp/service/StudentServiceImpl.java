@@ -7,6 +7,7 @@ import gr.aueb.cf.schoolapp.mapper.Mapper;
 import gr.aueb.cf.schoolapp.model.Student;
 import gr.aueb.cf.schoolapp.model.Teacher;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -97,8 +98,18 @@ public class StudentServiceImpl implements IStudentService{
 
         try{
             student = studentDAO.getById(id);
-            return Mapper.mapStudentToReadOnlyDTO(student)
+
+
+            StudentReadOnlyDTO dto =  Mapper.mapStudentToReadOnlyDTO(student)
                     .orElseThrow(()->new StudentNotFoundException("Student with this id was not found"));
+
+            if (student.getBirthdate() != null) {
+                dto.setBirthDate(student.getBirthdate());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                dto.setFormattedBirthDate(student.getBirthdate().format(formatter));
+            }
+            return dto;
+
         }catch(StudentNotFoundException | StudentDAOException e){
             //rollback
             throw e;

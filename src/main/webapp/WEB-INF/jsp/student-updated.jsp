@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Επιτυχής Εισαγωγή</title>
+<title>Επιτυχής Ενημέρωση</title>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/success.css">
 </head>
 <body class= "d-flex flex-column min-vh-100 bg-light-orange">
@@ -30,36 +30,35 @@
                             </div>
 
                             <!-- Success Message -->
-                            <h1 class="mb-4 text-success">Επιτυχής Εισαγωγή Καθηγητή</h1>
+                            <h1 class="mb-4 text-success">Επιτυχής Ενημέρωση
+                            Μαθητή</h1>
 
                             <!-- Teacher Information -->
                             <div class="teacher-info text-start">
-                                <h3 class="h5 mb-3">Στοιχεία Καθηγητή:</h3>
+                                <h3 class="h5 mb-3">Στοιχεία Μαθητή:</h3>
                                 <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
                                     <span class="fw-bold">Επώνυμο:</span>
-                                    <span>${sessionScope.teacherInfo.lastname}</span>
+                                    <span>${sessionScope.studentInfo
+                                    .lastname}</span>
                                 </div>
                                 <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
                                     <span class="fw-bold">Όνομα:</span>
-                                    <span>${sessionScope.teacherInfo.firstname}</span>
+                                    <span>${sessionScope.studentInfo.firstname}</span>
                                 </div>
-                                <c:if test="${not empty sessionScope.teacherInfo.email}">
+                                <c:if test="${not empty sessionScope.studentInfo.email}">
                                 <div class="d-flex justify-content-between">
                                     <span class="fw-bold">Email:</span>
-                                    <span>${sessionScope.teacherInfo.email}</span>
+                                    <span>${sessionScope.studentInfo.email}</span>
                                 </div>
                                 </c:if>
                             </div>
 
                         <!-- Action Buttons -->
-                            <div class="d-flex justify-content-center gap-3 mt-4">
-                                <a href="${pageContext.request.contextPath}/school-app/teachers/insert"
-                                   class="btn btn-success px-5 py-2 btn-lg return-btn">
-                                    Νέα Εισαγωγή
-                                </a>
-                                <a href="${pageContext.request.contextPath}/school-app/dashboard"
-                                   class="btn btn-primary btn-lg py-2 return-btn">
-                                    Επιστροφή στην Αρχική
+                            <div class="d-flex justify-content-center">
+                                <a href="${pageContext.request.contextPath}/school-app/students/view"
+                                   class="btn btn-primary btn-lg py-3 px-5
+                                   return-btn">
+                                    Επιστροφή
                                 </a>
                         </div>
                     </div>
