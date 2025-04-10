@@ -22,7 +22,7 @@ public class UserValidator<T> {
             throws UserDAOException {
         Map<String, String> errors = new HashMap<>();
 
-        if (!dto.getPassword().equals(dto.getConfirmedPassword())) {
+        if (!dto.getPassword().equals(dto.getConfirmPassword())) {
             errors.put("confirmPassword", "Το password και το confirmedPassword δεν είναι ίδια.");
         }
 

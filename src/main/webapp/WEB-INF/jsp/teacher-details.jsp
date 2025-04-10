@@ -34,7 +34,7 @@
                             <label for="id"
                             class="fw-bold">Κωδικός</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope
+                                <small class="text-danger">${requestScope
                                 .firstnameMessage}</small>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             name="firstname" value="${requestScope.teacher.firstname}" placeholder="Όνομα">
                             <label for="firstname" class="fw-bold">Όνομα</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope
+                                <small class="text-danger">${requestScope
                                 .firstnameMessage}</small>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                             placeholder="ΑΦΜ">
                             <label for="vat" class="fw-bold">ΑΦΜ</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope
+                                <small class="text-danger">${requestScope
                                 .vatMessage}</small>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             placeholder="Αριθμός Τηλεφώνου">
                             <label for="phoneNum" class="fw-bold">Αριθμός Τηλεφώνου</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope.phoneNumMessage}</small>
+                                <small class="text-danger">${requestScope.phoneNumMessage}</small>
                             </div>
                         </div>
 
@@ -77,7 +77,7 @@
                             placeholder="Οδός">
                             <label for="street" class="fw-bold">Οδός</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope.streetMessage}</small>
+                                <small class="text-danger">${requestScope.streetMessage}</small>
                             </div>
                         </div>
 
@@ -87,7 +87,7 @@
                             placeholder="ΤΚ">
                             <label for="zipcode" class="fw-bold">ΤΚ</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope.zipcodeMessage}</small>
+                                <small class="text-danger">${requestScope.zipcodeMessage}</small>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                             <label for="lastname"
                             class="fw-bold">Επώνυμο</label>
                             <div class="mt-1 min-height-form">
-                                <small class="text-danger">${sessionScope.lastnameMessage}</small>
+                                <small class="text-danger">${requestScope.lastnameMessage}</small>
                             </div>
                         </div>
 

@@ -14,8 +14,8 @@ public class InsertUserDTO extends BaseUserDTO {
 
     private String role;
 
-    public InsertUserDTO(String username, String password, String confirmedPassword, String role) {
-        super(username, password, confirmedPassword);
+    public InsertUserDTO(String username, String password, String confirmPassword, String role) {
+        super(username, password, confirmPassword);
         this.role = role;
     }
 

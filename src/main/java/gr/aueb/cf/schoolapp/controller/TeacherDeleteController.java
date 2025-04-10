@@ -2,6 +2,7 @@ package gr.aueb.cf.schoolapp.controller;
 
 import gr.aueb.cf.schoolapp.dao.ITeacherDAO;
 import gr.aueb.cf.schoolapp.dao.TeacherDAOImpl;
+import gr.aueb.cf.schoolapp.dto.TeacherReadOnlyDTO;
 import gr.aueb.cf.schoolapp.exceptions.TeacherDAOException;
 import gr.aueb.cf.schoolapp.service.ITeacherService;
 import gr.aueb.cf.schoolapp.service.TeacherServiceImpl;
@@ -27,8 +28,13 @@ public class TeacherDeleteController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("id"));
 
         try {
+            TeacherReadOnlyDTO teacher = teacherService.getTeacherById(id);
             teacherService.deleteTeacher(id);
             req.setAttribute("id", id);
+            req.setAttribute("teacher", teacher);
+            req.setAttribute("firstname",teacher.getFirstname());
+            req.setAttribute("lastname", teacher.getLastname());
+            req.setAttribute("email", teacher.getEmail());
             req.getRequestDispatcher("/WEB-INF/jsp/teacher-deleted.jsp").forward(req, resp);
         } catch (TeacherDAOException | TeacherNotFoundException e) {
             message = e.getMessage();
@@ -36,4 +42,5 @@ public class TeacherDeleteController extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/jsp/teachers.jsp").forward(req, resp);
         }
     }
+
 }

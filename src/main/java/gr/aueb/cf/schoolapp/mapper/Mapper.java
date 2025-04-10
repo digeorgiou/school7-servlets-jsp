@@ -39,7 +39,8 @@ public class Mapper {
     }
 
     public static UserReadOnlyDTO mapToReadOnlyDTO(User user) {
-        return new UserReadOnlyDTO(user.getId(), user.getUsername(), user.getPassword());
+        return new UserReadOnlyDTO(user.getId(), user.getUsername(),
+                user.getPassword(), user.getRoleType().toString());
     }
 
     public static User mapToUser(InsertUserDTO dto) {

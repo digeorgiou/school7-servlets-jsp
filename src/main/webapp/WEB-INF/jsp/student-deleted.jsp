@@ -31,11 +31,11 @@
 
                             <!-- Success Message -->
                             <h1 class="mb-4 text-success">Επιτυχής Διαγραφή
-                            Καθηγητή</h1>
+                            Μαθητή</h1>
 
                             <!-- Teacher Information -->
                             <div class="teacher-info text-start">
-                                <h3 class="h5 mb-3">Στοιχεία Καθηγητή:</h3>
+                                <h3 class="h5 mb-3">Στοιχεία Μαθητή:</h3>
                                 <div class="d-flex justify-content-between border-bottom pb-2 mb-2">
                                     <span class="fw-bold">Επώνυμο:</span>
                                     <span>${requestScope.lastname}</span>
@@ -70,4 +70,3 @@
 	 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

@@ -12,7 +12,7 @@ import lombok.Setter;
 public abstract class BaseUserDTO {
     private String username;
     private String password;
-    private String confirmedPassword;
+    private String confirmPassword;
 
 
     public BaseUserDTO(String username, String password) {

@@ -70,12 +70,14 @@
                                         <i class="bi bi-pencil-square fs-5"></i>
                                     </a>
                                     <a href="#" class="delete-btn"
-                                    data-teacher-id="${teacher.id}"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#deleteModal"
-                                    data-teacher-firstname="${teacher.firstname}"
-                                    data-teacher-lastname="${teacher.lastname}">
-                                    <i class="bi bi-trash-fill fs-5"></i>
+                                        data-teacher-id="${teacher.id}"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal"
+                                        data-teacher-firstname="${teacher
+                                        .firstname}"
+                                        data-teacher-lastname="${teacher
+                                        .lastname}">
+                                        <i class="bi bi-trash-fill fs-5"></i>
                                     </a>
                                 </div>
                             </td>
@@ -131,7 +133,8 @@
                 <div class="modal-body">
                     <p>Είστε σίγουροι ότι θέλετε να διαγράψετε τον καθηγητή:
                     </p>
-                     <p><strong>ID: <span id="modalTeacherId"></span></strong></p>
+                     <p><strong>ID: <span
+                     id="modalTeacherId"></span></strong></p>
                      <p><strong>Ονοματεπώνυμο: <span
                      id="modalTeacherLastname"></span>
                      <span id="modalTeacherFirstname"></span></strong></p>
@@ -149,35 +152,37 @@
         </div>
     </div>
 
-    <!-- JavaScript at bottom -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const deleteModal = document.getElementById('deleteModal');
+     <script>
+     document.addEventListener('DOMContentLoaded', function() {
+         const deleteModal = document.getElementById('deleteModal');
 
-        deleteModal.addEventListener('show.bs.modal', function(event) {
-            const button = event.relatedTarget;
+         deleteModal.addEventListener('show.bs.modal', function(event) {
+             const button = event.relatedTarget;
 
-            // Extract all data attributes
-            const id = button.getAttribute('data-teacher-id');
-            const firstname = button.getAttribute('data-teacher-firstname');
-            const lastname = button.getAttribute('data-teacher-lastname');
 
-            // Debugging - check values in console
-            console.log('Teacher Data:', {id, firstname, lastname});
+             // Extract all data attributes
+             const id = button.getAttribute('data-teacher-id');
+             const firstname = button.getAttribute('data-teacher-firstname');
+             const lastname = button.getAttribute('data-teacher-lastname');
 
-            // Update modal content
-            document.getElementById('modalTeacherId').textContent = id;
-            document.getElementById('modalTeacherLastname').textContent = lastname;
-            document.getElementById('modalTeacherFirstname').textContent = firstname;
 
-            // Set delete URL
-            document.getElementById('confirmDeleteBtn').href =
-                `${pageContext.request.contextPath}/school-app/teachers/delete?id=${id}`;
-        });
-    });
-    </script>
+             document.getElementById('confirmDeleteBtn').href = '/school-app/teachers/delete?id=' + id;
+
+             // Debugging - check values in console
+             console.log('Teacher Data:', {id, firstname, lastname});
+
+             // Update modal content
+             document.getElementById('modalTeacherId').textContent = id;
+             document.getElementById('modalTeacherLastname').textContent =
+             lastname;
+             document.getElementById('modalTeacherFirstname').textContent =
+             firstname;
+
+         });
+     });
+     </script>
 
 
 <script src="${pageContext.request.contextPath}/js/teachers.js">

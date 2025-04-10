@@ -80,10 +80,8 @@
                                         data-student-id="${student.id}"
                                         data-bs-toggle="modal"
                                         data-bs-target="#deleteModal"
-                                        data-student-firstname="${student
-                                        .firstname}"
-                                        data-student-lastname="${student
-                                        .lastname}">
+                                        data-student-firstname="${student.firstname}"
+                                        data-student-lastname="${student.lastname}">
                                         <i class="bi bi-trash-fill fs-5"></i>
                                     </a>
                                 </div>
@@ -164,13 +162,21 @@
     document.addEventListener('DOMContentLoaded', function() {
         const deleteModal = document.getElementById('deleteModal');
 
+
+
         deleteModal.addEventListener('show.bs.modal', function(event) {
             const button = event.relatedTarget;
+
+
+
 
             // Extract all data attributes
             const id = button.getAttribute('data-student-id');
             const firstname = button.getAttribute('data-student-firstname');
             const lastname = button.getAttribute('data-student-lastname');
+
+
+            document.getElementById('confirmDeleteBtn').href = '/school-app/students/delete?id=' + id;
 
             // Debugging - check values in console
             console.log('Student Data:', {id, firstname, lastname});
@@ -182,10 +188,6 @@
             document.getElementById('modalStudentFirstname').textContent =
             firstname;
 
-            // Set delete URL
-            document.getElementById('confirmDeleteBtn').href =
-                `${pageContext.request
-                .contextPath}/school-app/students/delete?id=${id}`;
         });
     });
     </script>
